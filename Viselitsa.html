@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viselitsa game</title>
+</head>
+<body>
+    <script>
+
+        var pickWord = function () {
+            var array = ["cat", "dog", "rabbit", "horse"];
+            return word = array[Math.floor(Math.random()*array.length)];
+        };
+        var setupAnswerArray = function (word) {
+            return word.split('');
+        };
+        var showPlayerProgress = function (answerArray) {
+            for (var i = 0; i < answerArray.length; i ++){
+                answerArray[i] = "_";
+            }
+            alert (answerArray.join(" "));
+        };
+        var getGuess = function () {
+            prompt("Enter the letter.");
+        };
+        var updateGameState = function (guess, word, answerArray) {
+            for (var i = 0; i < answerArray.length; i ++){
+                var lettersCount =0;
+                if (guess === word[i]) {
+                    answerArray[i] = guess;
+                    lettersCount ++;
+                }
+
+            }
+            return lettersCount;
+        };
+        var showAnswerAndCongratulatePlayer = function (answerArray) {
+            alert(answerArray);
+        };
+
+        var word = pickWord();
+        var answerArray = setupAnswerArray(word);
+        var remainingLetters = word.length;
+        console.log(remainingLetters.length);
+
+        while (remainingLetters > 0){
+            showPlayerProgress(answerArray);
+            var guess = getGuess();
+            if (guess === null){
+                break;
+            }
+            else if(guess.length !== 1){
+                alert("Enter ONE letter.")
+            }
+            else {
+                var correctGuesses = updateGameState(guess, word, answerArray);
+                remainingLetters -= correctGuesses;
+            }
+        }
+        showAnswerAndCongratulatePlayer(answerArray);
+
+    </script>
+
+</body>
+</html>
