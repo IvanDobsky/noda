@@ -5,15 +5,72 @@
     <title>My First Page</title>
 </head>
 <body>
-    <a href = www.finviz.com><h2>finviz</h2></a>
+    <a href = www.finviz.com><h2>Viselitsa / Ugadai Slovo!</h2></a>
     <p>some text</p>
     <p><b> some txt </b></p>
 
     <p>
 
         <script>
-            var likeCats = confirm("You like cats?");
-            if(true)
+            //Свои функции
+            var pickWord = function(){
+                var array = ["fox", "dog", "cat", "horse"];
+                return word = array[Math.floor(Math.random()*array.length)];
+            };
+            var setupAnswerArray = function (word) {
+                for (var i = 0; i <=word.length; i++){
+                    answerWord[i] = "_";
+                }
+                return answerWord.join(' ');
+            };
+
+            var showPlayerProgress = function (answerArray) {
+                alert(answerArray);
+            };
+            var getGuess = function () {
+                prompt("Enter the letter.");
+                return guess;
+            };
+            var updateGameState = function (guess, word, answerArray) {
+                for (var i = 0; i <= answerArray.length; i ++){
+                    if (word[i] === guess){
+                        answerArray[i] = guess;
+                        remainingLetters --;
+                    }
+                }
+            };
+
+            var showAnswerAndCongratulatePlayer = function (answerArray) {
+                for (var i = 0; i <= answerArray.length; i ++){
+                    if(answerArray[i] !== "_" && answerArray[i] !== " "){
+                        alert("Congratulations!")
+                    }
+                    else break;
+                }
+            };
+
+
+            var word = pickWord();
+            var answerArray = setupAnswerArray(word);
+            var remainingLetters = word.length;
+
+            while (remainingLetters > 0){
+                showPlayerProgress(answerArray);
+                var guess = getGuess();
+
+                if (guess === null){
+                    break;
+                }
+                else if (guess.length !== 1){
+                    alert("Vvedi odnu bukvu");
+                }
+                else {
+                    var correctGuesses = updateGameState(guess, word, answerArray);
+                    remainingLetters -= correctGuesses;
+                }
+            }
+            showAnswerAndCongratulatePlayer(answerArray);
+
         </script>
     </p>
 
