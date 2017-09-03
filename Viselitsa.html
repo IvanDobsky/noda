@@ -7,26 +7,26 @@
 <body>
     <script>
 
-        var pickWord = function () {
+        var pickWord = function () {    //тут объявляется массив слов и выбирается одно случайное слово
             var array = ["cat", "dog", "rabbit", "horse"];
             return word = array[Math.floor(Math.random()*array.length)];
         };
-        var setupAnswerArray = function (word) {
+        var setupAnswerArray = function (word) {    //тут это слово превращается с массив букв
             return word.split('');
         };
-        var showPlayerProgress = function (answerArray) {
+        var showPlayerProgress = function (answerArray) {   //тут буквы этого массива заменяются на "_" и выводятся на экран через пробел
             for (var i = 0; i < answerArray.length; i ++){
                 answerArray[i] = "_";
             }
             alert (answerArray.join(" "));
         };
-        var getGuess = function () {
+        var getGuess = function () {    //Тут необходимо получить ответ игрока
             prompt("Enter the letter.");
         };
-        var updateGameState = function (guess, word, answerArray) {
+        var updateGameState = function (guess, word, answerArray) {     //тут проверяется совпадение ответа с элементами массива загаданного слова, при совпадениии угаданная буква заменяет "_" в answerArray, и идет подсчет угаданных букв.
             for (var i = 0; i < answerArray.length; i ++){
                 var lettersCount =0;
-                if (guess === word[i]) {
+                if (guess[i] === word[i]) {
                     answerArray[i] = guess;
                     lettersCount ++;
                 }
@@ -34,7 +34,7 @@
             }
             return lettersCount;
         };
-        var showAnswerAndCongratulatePlayer = function (answerArray) {
+        var showAnswerAndCongratulatePlayer = function (answerArray) {      //поздравляет игрока
             alert(answerArray);
         };
 
