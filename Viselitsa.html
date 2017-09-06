@@ -28,13 +28,14 @@
     }
 
     function updateGameState(guess, word, answerArray) {
+        var lettersCount = 0;
         for (var i=0; i<word.length; i++){
             if (guess === answerArray[i]){
                 answerArray[i] = guess;
-                remainingLetter ++;
+                lettersCount ++;
             }
         }
-        return remainingLetter;
+        return [lettersCount, answerArray]; //тут, как я понял, должно возвращаться значение угаданных букв и исправленный массив
 
     }
     function showAnswerAndCongratulatePlayer(answerArray) {
@@ -60,6 +61,7 @@
         }
     }
     showAnswerAndCongratulatePlayer(answerArray);
+    console.log(remainingLetter);
 </script>
 </body>
 </html>
