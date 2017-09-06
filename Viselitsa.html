@@ -2,64 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Viselitsa game</title>
+    <title>2</title>
 </head>
 <body>
-    <script>
+<script>
+    function pickWord() {
+        var someWordsArray = ["cat", "horse", "rabbit"];
+        return word = someWordsArray[Math.floor(Math.random()*someWordsArray.length)];
+    }
+    var word = pickWord();
 
-        var pickWord = function () {    //тут объявляется массив слов и выбирается одно случайное слово
-            var array = ["cat", "dog", "rabbit", "horse"];
-            return word = array[Math.floor(Math.random()*array.length)];
-        };
-        var setupAnswerArray = function (word) {    //тут это слово превращается с массив букв
-            return word.split('');
-        };
-        var showPlayerProgress = function (answerArray) {   //тут буквы этого массива заменяются на "_" и выводятся на экран через пробел
-            for (var i = 0; i < answerArray.length; i ++){
-                answerArray[i] = "_";
-            }
-            alert (answerArray.join(" "));
-        };
-        var getGuess = function () {    //Тут необходимо получить ответ игрока
-            prompt("Enter the letter.");
-        };
-        var updateGameState = function (guess, word, answerArray) {     //тут проверяется совпадение ответа с элементами массива загаданного слова, при совпадениии угаданная буква заменяет "_" в answerArray, и идет подсчет угаданных букв.
-            for (var i = 0; i < answerArray.length; i ++){
-                var lettersCount =0;
-                if (guess[i] === word[i]) {
-                    answerArray[i] = guess;
-                    lettersCount ++;
-                }
+    function setupAnswerArray(word) {
+        var wordArray = [];
+        for (var i = 0; i<word.length; i++){
+            wordArray[i] = "_";
+        }
+        return wordArray;
+    }
 
-            }
-            return lettersCount;
-        };
-        var showAnswerAndCongratulatePlayer = function (answerArray) {      //поздравляет игрока
-            alert(answerArray);
-        };
+    function showPlayerProgress(answerArray) {
+        alert(answerArray.join(" "));
+    }
+    function getGuess() {
+        return prompt("Vvedi bukvu");
+    }
 
-        var word = pickWord();
-        var answerArray = setupAnswerArray(word);
-        var remainingLetters = word.length;
-        console.log(remainingLetters.length);
-
-        while (remainingLetters > 0){
-            showPlayerProgress(answerArray);
-            var guess = getGuess();
-            if (guess === null){
-                break;
-            }
-            else if(guess.length !== 1){
-                alert("Enter ONE letter.")
-            }
-            else {
-                var correctGuesses = updateGameState(guess, word, answerArray);
-                remainingLetters -= correctGuesses;
+    function updateGameState(guess, word, answerArray) {
+        for (var i=0; i<word.length; i++){
+            if (guess === answerArray[i]){
+                answerArray[i] = guess;
+                remainingLetter ++;
             }
         }
-        showAnswerAndCongratulatePlayer(answerArray);
+        return remainingLetter;
 
-    </script>
+    }
+    function showAnswerAndCongratulatePlayer(answerArray) {
+        alert(answerArray + "Congratulations!");
+    }
 
+    var answerArray = setupAnswerArray(word);
+    var remainingLetter = word.length;
+    console.log(remainingLetter);
+
+    while (remainingLetter > 0){
+        showPlayerProgress(answerArray);
+        var guess = getGuess();
+        if(guess === null){
+            break;
+        }
+        else if (guess.length !== 1){
+            alert("enter ONE letter!");
+        }
+        else{
+            var correctGuesses = updateGameState(guess, word, answerArray);
+            remainingLetter = remainingLetter - correctGuesses;
+        }
+    }
+    showAnswerAndCongratulatePlayer(answerArray);
+</script>
 </body>
 </html>
