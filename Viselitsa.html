@@ -10,15 +10,19 @@
         var someWordsArray = ["cat", "horse", "rabbit"];
         return word = someWordsArray[Math.floor(Math.random()*someWordsArray.length)];
     }
-    var word = pickWord();
+    var word = pickWord().split('');
+    console.log(word);
 
     function setupAnswerArray(word) {
-        var wordArray = [];
+        var wordArray =[];
         for (var i = 0; i<word.length; i++){
             wordArray[i] = "_";
         }
         return wordArray;
     }
+
+    var answerArray = setupAnswerArray(word);
+    console.log(answerArray);
 
     function showPlayerProgress(answerArray) {
         alert(answerArray.join(" "));
@@ -29,8 +33,8 @@
 
     function updateGameState(guess, word, answerArray) {
         var lettersCount = 0;
-        for (var i=0; i<word.length; i++){
-            if (guess === answerArray[i]){
+        for (var i=0; i<answerArray.length; i++){
+            if (guess === word[i]){
                 answerArray[i] = guess;
                 lettersCount ++;
             }
@@ -38,13 +42,12 @@
         return [lettersCount, answerArray]; //тут, как я понял, должно возвращаться значение угаданных букв и исправленный массив
 
     }
-    function showAnswerAndCongratulatePlayer(answerArray) {
+    function showAnswerAndCongratulatePlayer() {
         alert(answerArray + "Congratulations!");
     }
 
-    var answerArray = setupAnswerArray(word);
     var remainingLetter = word.length;
-    console.log(remainingLetter);
+    console.log(remainingLetter, getGuess());
 
     while (remainingLetter > 0){
         showPlayerProgress(answerArray);
@@ -57,10 +60,10 @@
         }
         else{
             var correctGuesses = updateGameState(guess, word, answerArray);
-            remainingLetter = remainingLetter - correctGuesses;
+            remainingLetter = remainingLetter - correctGuesses[0];
         }
     }
-    showAnswerAndCongratulatePlayer(answerArray);
+    showAnswerAndCongratulatePlayer();
     console.log(remainingLetter);
 </script>
 </body>
