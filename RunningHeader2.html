@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
     <title>Mouse moving</title>
 </head>
 <body>
@@ -64,54 +63,5 @@
             alert("You win!");
         }
     </script>
-=======
-    <title>Running Header</title>
-</head>
-    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
-<body>
-    <h1>Header</h1>
-    <script>
-        var direction = {
-            x : 0,
-            y : 0
-        };
-
-        setInterval(function () {
-            if(direction.x < 100 && direction.y < 100) {
-                $("h1").offset({left : direction.x});
-                direction.x++;
-            }
-            else if (direction.x > 0 && direction.y < 100) {
-                $("h1").offset({top : direction.y});
-                direction.y++;
-            }
-            else if(direction.x > 0 && direction.y > 0) {
-                $("h1").offset({left : direction.x});
-                direction.x--;
-            }
-            else if(direction.x < 100 && direction.y > 0) {
-                $("h1").offset({top : direction.y});
-                direction.y--;
-            }
-            console.log(direction.y, direction.x);
-        }, 10);
-
-//        var leftOffset = 0;
-//
-//        function moveHeaderToleft() {
-//            $("h1").offset({left : leftOffset});
-//            leftOffset++;
-//            if(leftOffset > 100) {
-//                clearInterval(moveToLeft);
-//            }
-//            return leftOffset;
-//        };
-//
-//        var moveToLeft = setInterval(moveHeaderToleft, 15);
-
-
-    </script>
-
->>>>>>> origin/master
 </body>
 </html>
