@@ -51,17 +51,18 @@
 
         function speedUp() {
             clearInterval(id);
-            speed = speed-5;
-            id = setInterval(headingMover, speed);
+            speed = speed-9;
             clickCount++;
+            id = setInterval(headingMover, speed);
             console.log("Click : " + clickCount, "Speed : " + speed);
+
+            if (clickCount>9){
+                alert("You win!");
+            }
 
         }
         $("h1").click(speedUp);
 
-        if (clickCount>10){
-            alert("You win!");
-        }
     </script>
 </body>
 </html>
