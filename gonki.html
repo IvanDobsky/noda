@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gonki!</title>
+</head>
+<body>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        var Car = function (x, y) {
+            this.x = x;
+            this.y = y;
+            this.draw();
+
+        };
+      Car.prototype.draw = function () {
+            var carHtml = '<img src="miniPicture.png">';
+            this.carElement = $(carHtml);
+            this.carElement.css({
+                position: "absolute",
+                left: this.x,
+                top: this.y
+            });
+            $("body").append(this.carElement);
+        };
+      Car.prototype.moveRight = function () {
+          this.x+=5;
+
+          this.carElement.css({
+              left: this.x,
+              top: this.y
+          });
+      };
+      Car.prototype.moveLeft = function () {
+          this.x -=5;
+          this.carElement.css({
+              left: this.x,
+              top: this.y
+          })
+      };
+      Car.prototype.moveDown = function () {
+          this.y +=5;
+          this.carElement.css({
+              left: this.x,
+              top: this.y
+          })
+      };
+      Car.prototype.moveUp = function () {
+          this.y -=5;
+          this.carElement.css({
+              left: this.x,
+              top: this.y
+          })
+      }
+        var tesla = new Car(50, 30);
+        var nissan = new Car(130, 250);
+    </script>
+</body>
+</html>
