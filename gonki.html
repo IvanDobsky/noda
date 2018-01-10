@@ -5,22 +5,24 @@
     <title>Gonki!</title>
 </head>
 <body>
-    <script src="jquery-3.2.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
         var Car = function (x, y) {
             this.x = x;
             this.y = y;
             this.draw();
-
         };
       Car.prototype.draw = function () {
-            var carHtml = '<img src="miniPicture.png">';
+            var carHtml = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTLTtOav2RXJ7otppN8g4bdPFD9XerdeGfn8u_b-ucRemie8KN">';
+            // var car2Html = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq6mekl9Trp1o4UlOR5fOc22oMBh_B59HhWBhWhRt5YC2qqdpCzA">';
+
             this.carElement = $(carHtml);
             this.carElement.css({
                 position: "absolute",
                 left: this.x,
                 top: this.y
             });
+            console.log(this.carElement.css);
             $("body").append(this.carElement);
         };
       Car.prototype.moveRight = function () {
@@ -51,9 +53,9 @@
               left: this.x,
               top: this.y
           })
-      }
+      };
         var tesla = new Car(50, 30);
-        var nissan = new Car(130, 250);
+        // var nissan = new Car(130, 250);
     </script>
 </body>
 </html>
