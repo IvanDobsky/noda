@@ -31,7 +31,7 @@
                 return "It's hot."
             }
             else if (distance < 100){
-                return "Warm."
+                return "Warm.";
             }
             else if (distance < 200){
                 return "Cold"
@@ -57,6 +57,9 @@
             clicks++;
             var distance = getDistance(event,target);
             var distanceHint = getDistanceHint(distance);
+            if (distanceHint === "Warm."){
+                alert("Clicks remain: "+ clicks);
+            }
             $("#distance").text(distanceHint);
             console.log(target);
 

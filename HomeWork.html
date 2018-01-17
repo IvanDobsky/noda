@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomeWork</title>
+</head>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<body>
+    <h1>Zagolovok_H1</h1>
+    <script>
+        var direction = {
+            x : 0,
+            y : 0
+        };
+        function moveHeadingToleft() {
+            $("h1").offset({left : leftOffset});
+            if(direction.x < 200){
+                direction.x++;
+            }
+            else if(direction.x > 1){
+                direction.x--;
+            }
+            return direction.x;
+        }
+
+        function moveHeadingToTop() {
+            $("h1").offset({top : topOffset});
+            if(direction.y < 1){
+                direction.y++;
+            }
+            else if(direction.y > 1){
+                direction.y--;
+            }
+            return direction[x] = ;
+        }
+
+        setInterval(function(){
+            if (direction.x = 200){
+                moveHeadingToTop
+
+            }
+
+        })
+    </script>
+
+</body>
+</html>
+
+<!--/*-->
+<!--var direction = {-->
+<!--x: 0-->
+<!--y: 0-->
+<!--}-->
+<!--setInterval(function(){-->
+<!--if (direction.x> 1920) {дошли до правого края, меняем начинаем вычитать}-->
+<!--else { еще не дошли до правого края, рисуем Н1 и прибавляем к direction.x 200}-->
+<!--}, 1000)-->
+<!--*/-->

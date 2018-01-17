@@ -5,16 +5,18 @@
     <title>Gonki!</title>
 </head>
 <body>
-    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
     <script>
         var Car = function (x, y) {
             this.x = x;
             this.y = y;
             this.draw();
         };
-      Car.prototype.draw = function () {
-            var carHtml = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTLTtOav2RXJ7otppN8g4bdPFD9XerdeGfn8u_b-ucRemie8KN">';
-            // var car2Html = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq6mekl9Trp1o4UlOR5fOc22oMBh_B59HhWBhWhRt5YC2qqdpCzA">';
+        // var randomSpeed = Math.floor(Math.random()*6);
+
+        Car.prototype.draw = function () {
+            var carHtml = '<img src="orangeCar.png">';
+            // var car2Html = '<img src="greenCar.png">';
 
             this.carElement = $(carHtml);
             this.carElement.css({
@@ -22,40 +24,21 @@
                 left: this.x,
                 top: this.y
             });
-            console.log(this.carElement.css);
             $("body").append(this.carElement);
         };
-      Car.prototype.moveRight = function () {
-          this.x+=5;
-
-          this.carElement.css({
-              left: this.x,
-              top: this.y
-          });
-      };
-      Car.prototype.moveLeft = function () {
-          this.x -=5;
-          this.carElement.css({
-              left: this.x,
-              top: this.y
-          })
-      };
-      Car.prototype.moveDown = function () {
-          this.y +=5;
-          this.carElement.css({
-              left: this.x,
-              top: this.y
-          })
-      };
-      Car.prototype.moveUp = function () {
-          this.y -=5;
-          this.carElement.css({
-              left: this.x,
-              top: this.y
-          })
-      };
-        var tesla = new Car(50, 30);
-        // var nissan = new Car(130, 250);
+        Car.prototype.moveRight = function (speed) {
+            this.x +=speed;
+            this.carElement.css({
+                left: this.x,
+                top: this.y
+            });
+        };
+        var tesla = new Car (0,0);
+        var nissan = new Car (0,30);
+        setInterval(function () {
+            tesla.moveRight(Math.random()*5);
+            nissan.moveRight(Math.random()*5);
+        },30)
     </script>
 </body>
 </html>

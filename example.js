@@ -1,22 +1,9 @@
-var input = "javascript is awesome";
-var output = "";
+var counter = 1;
 
-for(i=0;i<input.length;i++){
-
-    if (input[i] === "a"){
-        output += 4;
-    }
-    else if(input[i] === "i"){
-        output += 1;
-    }
-    else if(input[i] === "o"){
-        output += 0;
-    }
-    else if(input[i] === "e"){
-        output += 3;
-    }
-    else output += input[i];
-
+function printMessage() {
+    console.log("waiting for " + counter + " sec.");
+    counter++;
 }
 
-console.log(output);
+var interval = setInterval(printMessage, 1000);
+clearInterval(interval);
